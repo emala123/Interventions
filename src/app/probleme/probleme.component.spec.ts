@@ -1,7 +1,9 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProblemeComponent } from './probleme.component';
+
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -9,7 +11,7 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, HttpClientModule],
       declarations: [ ProblemeComponent ]
     })
     .compileComponents();
@@ -54,7 +56,5 @@ describe('ProblemeComponent', () => {
     prenom.setValue(' '.repeat(2) + 'a'.repeat(1));
     expect(prenom.valid).toBeFalsy();
   });
-
-
 
 });
