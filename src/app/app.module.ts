@@ -9,12 +9,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ProblemeData } from './probleme/probleme-data';
+import { EmailMatcherComponent } from './shared/email-matcher/email-matcher.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    ProblemeComponent
+    ProblemeComponent,
+    EmailMatcherComponent
   ],
   imports: [
     BrowserModule,
