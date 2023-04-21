@@ -113,13 +113,17 @@ export class ProblemeComponent {
       courrielGroupControl.setValidators([
         Validators.compose([emailMatcherValidator.courrielDifferents()]),
       ]);
-    } else {
-      if (typeNotification === 'ParTelephone') {
-        telephone.setValidators([Validators.required, Validators.pattern('[0-9]+'),
-       Validators.minLength(10), Validators.maxLength(10)]);
+    } else if (typeNotification === 'ParTelephone') {
+      telephone.setValidators([Validators.required, Validators.pattern('[0-9]+'),
+     Validators.minLength(10), Validators.maxLength(10)]);
 
-        telephone.enable();
-      }
+      telephone.enable();
+    } else if (typeNotification === "Inconnu"){
+    telephone.setValidators([Validators.required])
+    telephone.disable();
+    courrielGroupControl.setValidators([Validators.required])
+    courrielGroupControl.disable();
+    
     }
   }
 }
