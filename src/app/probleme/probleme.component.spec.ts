@@ -232,4 +232,77 @@ describe('ProblemeComponent', () => {
 
     expect(groupe.valid).toBeTruthy();
   });
+  it('#29 | Zone TELEPHONE est activ�e quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    expect(zone.disabled).toBeFalsy();
+  });
+
+  it('#30 | Zone ADRESSE COURRIEL est d�sactiv�e quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('courrielGroup.courriel');
+
+    expect(zone.disabled).toBeTruthy();
+  });
+
+  it('#31 | Zone CONFIRMER COURRIEL est d�sactiv�e quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('courrielGroup.courrielConfirmation');
+
+    expect(zone.disabled).toBeTruthy();
+  });
+
+  it('#32 | Zone TELEPHONE est invalide sans valeur quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    zone.setValue('')
+
+    expect(zone.valid).toBeFalsy();
+  });  
+
+  it('#33 | Zone TELEPHONE est invalide avec des caract�res non-num�riques quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    zone.setValue("agewahgre")
+
+    expect(zone.valid).toBeFalsy();
+  });  
+
+  it('#34 | Zone TELEPHONE est invalide avec 9 chiffres cons�cutifs quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    zone.setValue("000000000")
+
+    expect(zone.valid).toBeFalsy();
+  });  
+  it('#34 | Zone TELEPHONE est invalide avec 11 chiffres cons�cutifs quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    zone.setValue("00000000000")
+
+    expect(zone.valid).toBeFalsy();
+  });  
+
+  it('#36 | Zone TELEPHONE est valide avec 10 chiffres cons�cutifs quand notifier par messagerie texte', () => {
+    component.gestionNotifications('ParTelephone');
+
+    let zone = component.problemeForm.get('telephone');
+
+    zone.setValue("0000000000")
+
+    expect(zone.valid).toBeTruthy();
+  });  
+
 });
