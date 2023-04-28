@@ -53,6 +53,8 @@ export class ProblemeComponent {
       telephone: [{ value: '', disabled: true }],
 
       pasnotification: [{ value: '', disabled: true }],
+
+      notification:['pasnotification']
     });
 
     this.problemes.obtenirTypesProbleme().subscribe(
@@ -60,6 +62,11 @@ export class ProblemeComponent {
 
       (error) => (this.errorMessage = <any>error)
     );
+
+    this.problemeForm.get('notification').valueChanges
+    .subscribe(value=>this.gestionNotifications(value));
+
+
   }
 
   gestionNotifications(typeNotification: string): void {
